@@ -172,6 +172,19 @@ def older_than(age):
     return older        
 
 # 10. Gym Membership System
-def register_member(): pass
-def change_plan(): pass
-def unpaid_members(): pass
+members = {}
+def register_member(name, member, pay): 
+    
+    members[name] = [member, pay]
+    
+def change_plan(name, new_member): 
+  
+    if name in members:
+        members[name][0] = new_member
+        
+def unpaid_members(): 
+    unpaid = []
+    for name, values in members.items():
+        if values[1] == "late":
+            unpaid.append(name)
+    return unpaid
